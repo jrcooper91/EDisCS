@@ -1,0 +1,8 @@
+def calculate_SFR():
+	from astropy.cosmology import WMAP9 as cosmo
+	import numpy as np 
+	D_l_mpc = np.array(cosmo.luminosity_distance(z)) #luminosity distance mpc
+	D_l_cm = D_l_mpc*3.08567758128E+24               #luminosity distance cm
+	logLHa = np.log10(4*np.pi*f_Ha*D_l_cm**2)       #luminosity logHa
+	SFR = logLHa - 41.27                             #SFR from Kennicutt & Evans
+	print  SFR
