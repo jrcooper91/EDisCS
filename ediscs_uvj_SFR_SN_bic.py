@@ -375,7 +375,7 @@ def c1059(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     plt.scatter(rf_m[np.where((z>0.4364)&(z<0.4764)&(c>0.))],SFR[np.where((z>0.4364)&(z<0.4764)&(c>0.))],color='blue',alpha=0.7,marker = 'o')
     plt.scatter(rf_m[np.where((z>0.4364)&(z<0.4764)&(c<1.))],SFR[np.where((z>0.4364)&(z<0.4764)&(c<1.))],color='blue',alpha=0.5,marker = 'x')
     plt.scatter(rf_m[np.where(z<0.4364)],SFR[np.where(z<0.4364)],c='red',alpha=0.5)
-    plt.scatter(rf_m[np.where(z>0.4996)],SFR[np.where(z>0.4996)],c='red',alpha=0.5)   
+    plt.scatter(rf_m[np.where(z>0.4764)],SFR[np.where(z>0.4764)],c='red',alpha=0.5)   
     plt.xlim(7.5,11.5)
     #plt.ylim(-1,3)
     plt.xlabel('logM')
