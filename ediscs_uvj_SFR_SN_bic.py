@@ -88,6 +88,7 @@ def c1301(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     plt.scatter(rf_VJ[np.where(z>0.5028)],rf_UV[np.where(z>0.5028)],c=SFR[np.where(z>0.5028)])
     cbar = plt.colorbar()
     cbar.set_label("log(SFR)")
+    cbar.set_clim(-0.2,0.8)
     plt.xlabel('V-J')
     plt.ylabel('U-V')
     plt.title('Field UVJ')
@@ -111,6 +112,7 @@ def c1301(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     plt.scatter(rf_VJ[np.where(z<0.4628)],rf_UV[np.where(z<0.4628)],c=SFR[np.where(z<0.4628)])
     plt.scatter(rf_VJ[np.where(z>0.5028)],rf_UV[np.where(z>0.5028)],c=SFR[np.where(z>0.5028)])    
     cbar = plt.colorbar()
+    cbar.set_clim(-0.2,0.8)
     cbar.set_label("log(SFR)")
     plt.xlabel('V')
     plt.ylabel('U-V')    
@@ -134,6 +136,31 @@ def c1301(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
                           markersize=10, label='Within R200')
     plt.legend(handles=[red_patch,blue_patch,blue_star],loc=2)
     
+    plt.subplot(3,2,6)
+    
+    zc       = z[np.where((z>0.4628)&(z<0.5028))]
+    
+    zf1       = z[np.where(z<0.4628)]   
+    zf2       = z[np.where((z>0.5028))]
+
+    x1 = zc
+    x2 = zf1
+    x3 = zf2
+    
+    
+    kwargs1 = dict(histtype='stepfilled', alpha=0.3, normed=False, bins=2)
+    kwargs2 = dict(histtype='stepfilled', alpha=0.3, normed=False, bins=5)
+    kwargs3 = dict(histtype='stepfilled', alpha=0.3, normed=False, bins=5)
+
+
+
+    
+    plt.hist(x1,color='blue', **kwargs1)
+    plt.hist(x2,color='red', **kwargs2)
+    plt.hist(x3,color='red', **kwargs3);
+    plt.xlabel('z')
+
+
     plt.show()
     
 
@@ -215,6 +242,7 @@ def c1138(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     plt.scatter(rf_VJ[np.where(z<0.4596)],rf_UV[np.where(z<0.4628)],c=SFR[np.where(z<0.4596)])
     plt.scatter(rf_VJ[np.where(z>0.4996)],rf_UV[np.where(z>0.4996)],c=SFR[np.where(z>0.4996)])
     cbar = plt.colorbar()
+    cbar.set_clim(0,1)
     cbar.set_label("log(SFR)")
     plt.xlabel('V-J')
     plt.ylabel('U-V')
@@ -239,6 +267,7 @@ def c1138(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     plt.scatter(rf_VJ[np.where(z<0.4596)],rf_UV[np.where(z<0.4596)],c=SFR[np.where(z<0.4596)])
     plt.scatter(rf_VJ[np.where(z>0.4996)],rf_UV[np.where(z>0.4996)],c=SFR[np.where(z>0.4996)])    
     cbar = plt.colorbar()
+    cbar.set_clim(0,1)
     cbar.set_label("log(SFR)")
     plt.xlabel('V')
     plt.ylabel('U-V')    
@@ -261,12 +290,36 @@ def c1138(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     blue_star = mlines.Line2D([], [], color='blue', marker='x', linestyle='None',
                           markersize=10, label='Within R200')
     plt.legend(handles=[red_patch,blue_patch,blue_star],loc=1)
+
+    plt.subplot(3,2,6)
+    
+    zc       = z[np.where((z>0.4596)&(z<0.4996))]
+    
+    zf1       = z[np.where(z<0.4596)]   
+    zf2       = z[np.where((z>0.4996))]
+
+    x1 = zc
+    x2 = zf1
+    x3 = zf2
+    
+    
+    kwargs1 = dict(histtype='stepfilled', alpha=0.3, normed=False, bins=2)
+    kwargs2 = dict(histtype='stepfilled', alpha=0.3, normed=False, bins=5)
+    kwargs3 = dict(histtype='stepfilled', alpha=0.3, normed=False, bins=5)
+
+
+
+    
+    plt.hist(x1,color='blue', **kwargs1)
+    plt.hist(x2,color='red', **kwargs2)
+    plt.hist(x3,color='red', **kwargs3);
+    plt.xlabel('z')
     
     plt.show()
     
 def c1059(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     plt.figure(figsize=(18, 16), dpi= 80, facecolor='w', edgecolor='k')
-    f = open('/Users/jennifercooper/Documents/Gal_Ev/EDisCS/G102/test/1059_sn_bic>5.txt', 'r')
+    f = open('/Users/jennifercooper/Documents/Gal_Ev/EDisCS/G102/test/1059_sn_bic>5_no_st.txt', 'r')
     lines = f.readlines()[1:]
     f.close()
     
@@ -336,11 +389,12 @@ def c1059(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     plt.ylim(0,3)
     
     plt.subplot(3,2,2)
-    #plt.scatter(rf_VJ[np.where(np.logical_and(z<0.4628,z>0.5028))],rf_UV[np.where(np.logical_and(z<0.4628,z>0.5028))],c=SFR[np.where(np.logical_and(z<0.4628,z>0.5028))])
+
     plt.scatter(rf_VJ[np.where(z<0.4364)],rf_UV[np.where(z<0.4364)],c=SFR[np.where(z<0.4364)])
     plt.scatter(rf_VJ[np.where(z>0.4764)],rf_UV[np.where(z>0.4764)],c=SFR[np.where(z>0.4764)])
     cbar = plt.colorbar()
     cbar.set_label("log(SFR)")
+    cbar.set_clim(-0.5,1.25)
     plt.xlabel('V-J')
     plt.ylabel('U-V')
     plt.title('Field UVJ')
@@ -497,6 +551,7 @@ def c1227(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     plt.scatter(rf_VJ[np.where(z<0.6157)],rf_UV[np.where(z<0.6157)],c=SFR[np.where(z<0.6157)])
     plt.scatter(rf_VJ[np.where(z>0.6557)],rf_UV[np.where(z>0.6557)],c=SFR[np.where(z>0.6557)])
     cbar = plt.colorbar()
+    cbar.set_clim(0,0.5)
     cbar.set_label("log(SFR)")
     plt.xlabel('V-J')
     plt.ylabel('U-V')
@@ -521,6 +576,7 @@ def c1227(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     plt.scatter(rf_VJ[np.where(z<0.6157)],rf_UV[np.where(z<0.6157)],c=SFR[np.where(z<0.6157)])
     plt.scatter(rf_VJ[np.where(z>0.6557)],rf_UV[np.where(z>0.6557)],c=SFR[np.where(z>0.6557)])    
     cbar = plt.colorbar()
+    cbar.set_clim(0,0.5)
     cbar.set_label("log(SFR)")
     plt.xlabel('V')
     plt.ylabel('U-V')    
@@ -542,8 +598,33 @@ def c1227(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     blue_patch = mpatches.Patch(color='blue', label='Outside R200', alpha = 0.5)
     blue_star = mlines.Line2D([], [], color='blue', marker='x', linestyle='None',
                           markersize=10, label='Within R200')
-    plt.legend(handles=[red_patch,blue_patch,blue_star],loc=3)
+    plt.legend(handles=[red_patch,blue_patch,blue_star],loc=2)
+
+    plt.subplot(3,2,6)
     
+    zc       = z[np.where((z>0.6157)&(z<0.6557))]  
+    
+    zf1       = z[np.where(z<0.6157)]   
+    zf2       = z[np.where((z>0.6557))]
+
+    x1 = zc
+    x2 = zf1
+    x3 = zf2
+    
+    
+    kwargs1 = dict(histtype='stepfilled', alpha=0.3, normed=False, bins=2)
+    kwargs2 = dict(histtype='stepfilled', alpha=0.3, normed=False, bins=12)
+    kwargs3 = dict(histtype='stepfilled', alpha=0.3, normed=False, bins=3)
+
+
+
+    
+    plt.hist(x1,color='blue', **kwargs1)
+    plt.hist(x2,color='red', **kwargs2)
+    plt.hist(x3,color='red', **kwargs3);
+    plt.xlabel('z')
+
+
     plt.show()
     
 
