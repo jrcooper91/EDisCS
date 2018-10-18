@@ -168,7 +168,7 @@ def c1301(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
 
 def c1138(f_Ha,rf_J,rf_U,rf_V,rf_VJ,rf_UV,rf_m,logLHa,SFR,z,q,c):
     plt.figure(figsize=(18, 16), dpi= 80, facecolor='w', edgecolor='k')
-    f = open('/Users/jennifercooper/Documents/Gal_Ev/EDisCS/G102/test/1138_sn_bic>5.txt', 'r')
+    f = open('/Users/jennifercooper/Documents/Gal_Ev/EDisCS/G102/test/1138_sn_bic>5_no_st.txt', 'r')
     lines = f.readlines()[1:]
     f.close()
     
